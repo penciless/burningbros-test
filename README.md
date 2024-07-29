@@ -37,7 +37,30 @@ Therefore, let's take notes about user credentials being initialized when app ge
 | user      | password |
 | john      | password |
 
+###### Using Postman?
+* Open Postman and create a new request.
+* Select the HTTP method (GET, POST, PUT, DELETE, etc.).
+* Enter the request URL.
+* Go to the "Authorization" tab.
+* Select "Basic Auth" from the dropdown menu.
+* Enter the username and password.
+* Click "Send" to make the request.
 
-```Test some code block
-var value = 123;
+#### POST /users/register
+**Description:** create a new user account
+
+**Authorization:** Public / No Auth
+
+**Body:**
+```json
+{
+    "username": "userB",
+    "password": "password",
+    "roles": "ADMIN"
+}
 ```
+
+**Note:**
+
+Even when you set role "admin" or any value, it will end up as role "USER".
+Admin can only be created via SQL statement, so look up file `data.sql` in the project to add manually.
