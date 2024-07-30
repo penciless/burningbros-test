@@ -46,6 +46,8 @@ Therefore, let's take notes about user credentials being initialized when app ge
 * Enter the username and password.
 * Click "Send" to make the request.
 
+------
+
 #### POST /users/register
 **Description:** create a new user account
 
@@ -61,6 +63,43 @@ Therefore, let's take notes about user credentials being initialized when app ge
 ```
 
 **Note:**
-
 Even when you set role "admin" or any value, it will end up as role "USER".
 Admin can only be created via SQL statement, so look up file `data.sql` in the project to add manually.
+
+------
+
+#### POST /users/login
+**Description:** authenticate user
+
+**Authorization:** Basic Authentication (ADMIN/USER)
+
+**Response - Success**
+```
+200 - OK
+{
+    "id": 2,
+    "username": "user",
+    "password": null,
+    "roles": "USER",
+    ...
+}
+```
+
+**Response - Failure**
+```
+401 - Unauthorized
+```
+
+**Note:**
+After authentication, you can call other APIs without setting Basic Auth again.
+
+------
+
+#### GET /users/logout
+**Description:** logout current user account
+
+**Authorization:** Public / No Auth
+
+**Note:**
+After logout, calling APIs requiring Basic Auth will return 401 - Unauthorized.
+
