@@ -128,9 +128,7 @@ After logout, calling APIs requiring Basic Auth will return 401 - Unauthorized.
 ------
 
 #### GET /vehicles
-**Description:**
-
-Get vehicles, including associated maintenance records.
+**Description:** Get vehicles, including associated maintenance records.
 
 Admin: get all vehicles.
 
@@ -188,6 +186,8 @@ User: get vehicles that user has ownership
 **Note:**
 Use `GET /vehicles/{id}` to get only one vehicle.
 
+------
+
 #### POST /vehicles
 **Description:** Add a new vehicle.
 
@@ -221,6 +221,8 @@ Use `GET /vehicles/{id}` to get only one vehicle.
 ```
 401 - Unauthorized
 ```
+
+------
 
 #### PUT /vehicles/{id}
 **Description:** Update a vehicle, restricted to the vehicle owner or Admin.
