@@ -261,3 +261,129 @@ Use `GET /vehicles/{id}` to get only one vehicle.
 404 - Not Found
 ```
 
+------
+
+#### GET /maintenanceRecords
+**Description:** Get maintenance records, linked to vehicle information, restricted to the record owner or Admin.
+
+**Authorization:** Basic Authentication (ADMIN/USER)
+
+**Response - Success**
+```
+200 - OK
+[
+    {
+        "id": 1,
+        "vehicleId": 2,
+        "date": "2024-07-28T17:00:00.000+00:00",
+        "description": "Fix wheel",
+        "cost": 14.9,
+        "vehicle": {
+            "id": 2,
+            "userId": 2,
+            "brand": "Toyota",
+            "model": "M1001",
+            "year": 2021,
+            "type": "car",
+            "maintenanceRecords": null
+        }
+    },
+    {
+        "id": 2,
+        "vehicleId": 2,
+        "date": "2024-07-24T17:00:00.000+00:00",
+        "description": "Fix chair",
+        "cost": 23.9,
+        "vehicle": {
+            "id": 2,
+            "userId": 2,
+            "brand": "Toyota",
+            "model": "M1001",
+            "year": 2021,
+            "type": "car",
+            "maintenanceRecords": null
+        }
+    }
+]
+```
+
+**Response - Failure**
+```
+401 - Unauthorized
+```
+
+**Note:**
+Use `GET /maintenanceRecords/{id}` to get only one maintenance record.
+
+------
+
+#### POST /maintenanceRecords
+
+**Description:** Add a new maintenance record for vehicle, restricted to the record owner or Admin.
+
+**Authorization:** Basic Authentication (ADMIN/USER)
+
+**Body:**
+```json
+{
+    "date": "2024-07-30",
+    "description": "Fix minors",
+    "cost": 20.5,
+    "vehicleId": 3
+}
+```
+
+**Response - Success**
+```
+201 - Created
+{
+    "id": 3,
+    "vehicleId": 3,
+    "date": "2024-07-30T00:00:00.000+00:00",
+    "description": "Fix minors",
+    "cost": 20.5
+}
+```
+
+**Response - Failure**
+```
+401 - Unauthorized
+```
+
+------
+
+#### PUT /maintenanceRecords/{id}
+**Description:** Update a maintenance records, restricted to the record owner or Admin.
+
+**Authorization:** Basic Authentication (ADMIN/USER)
+
+**URL:** `id = 1`
+
+**Body:**
+```json
+{
+    "vehicleId": 2,
+    "date": "2024-07-28T17:00:00.000+00:00",
+    "description": "Fix wheel updated",
+    "cost": 14.99
+}
+```
+
+**Response - Success**
+```
+200 - OK
+{
+    "id": 1,
+    "vehicleId": 2,
+    "date": "2024-07-28T17:00:00.000+00:00",
+    "description": "Fix wheel updated 3",
+    "cost": 14.99
+}
+```
+
+**Response - Failure**
+```
+401 - Unauthorized
+404 - Not Found
+```
+
