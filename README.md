@@ -26,6 +26,14 @@ Some other useful commands, just in case:
   
   `./mvnw install -DskipTests`: useful flag to move forward when tests having issues
 
+# Known Issues or Limitations
+- Lack of time to perfect a project built from scratch (starting from installing Java environment), so keep it simple.
+- Database table with columns are lack of constraints, forgein keys, etc.
+- Better draft schema for database in `schema.sql`, but not implemented.
+- Less secured and recommend using JWT in real project.
+- Out of time, so less test cases, also not familiar with test tools in Java, as my strength is in JavaScript.
+- Apply Jacoco for code coverage but seem not work, no more time for learning and investigation.
+
 # APIs
 Basic authentication is used for securing endpoints and simplicity purpose.
 
